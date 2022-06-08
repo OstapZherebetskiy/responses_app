@@ -2,10 +2,7 @@
 
 {% block title %} 
     {{place.text}}   
-    
     {% endblock title %}
-    
-    
 {% block h1 %}
     {{place.text}}   
     
@@ -15,7 +12,8 @@
     
     {% block body %}  
     
-    {% for el in coment %}
+    <a href="{% url 'comment_update' place.id %}" class="btn btn-success"> Add comment </a>
+    {% for el in comment %}
     <div class="card mb-3">
         <h4 class="card-header">
          {{ el.date_added|date:'M d, Y H:i' }}
@@ -24,11 +22,11 @@
          </h4>
          <div class="card-body">
             {{ el.text|linebreaks }}
-            <a> View full info </a>
-            </div>
-            </div>
 
-        {% endfor %} 
-
+        </div>
+    </div>
+    
+    {% endfor %} 
+    
         
     {% endblock body %}

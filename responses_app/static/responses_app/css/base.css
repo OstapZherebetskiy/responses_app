@@ -101,7 +101,22 @@ header div {
 }
 
 .reg_form {
-    text-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    display: block;
+    padding: 5px;
+    color: black;
+    
+    
+    
+    
+    background-color: rgba(116, 109, 109, 0.705);
+    background-clip: padding-box;
+    
+    border-radius: 20px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .form_groupp{
@@ -130,12 +145,15 @@ header div {
     background-color: #beb1b1c7;
     border-color: #606360be;
     margin-bottom: 10px;
+    border: 0px;
     transition: all 1s;
 }
 
 .btn-success:hover {
     transform: scale(1.05);
     background-color: rgba(116, 109, 109, 0.705);
+    border: 0px;
+    border-color: rgba(114, 113, 113, 0.767);
 }
 
 .form-control-text{
@@ -160,15 +178,24 @@ header div {
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: black;
+    background-color: rgba(180, 170, 170, 0.795);
+    
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid rgba(116, 109, 109, 0.705);
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: all 0.7s;
+    
+}
+
+
+.login-control:focus {
+    color: black;
+    background-color: rgba(116, 109, 109, 0.705);
 }
 .login-form {
     background-color: rgba(116, 109, 109, 0.705);
+    border-radius: 20px;
     display: flex;
     height: 300px;
     align-items: center;
@@ -184,4 +211,9 @@ header div {
 
 .login-center{
     width: 100%;
+}
+
+.helptext {
+    font-size: large;
+    color: black;
 }

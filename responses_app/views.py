@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Areas, Places, Comments
-from .forms import PlacesForm
-from django.views.generic import DeleteView
+from .forms import PlacesForm, CommentsForm
+from django.views.generic import DeleteView, UpdateView
 # Create your views here.
 
 def index(request):
@@ -52,3 +52,22 @@ def comments(request, pk):
         'comment':comment
     }
     return render(request, 'responses_app/comments.html', context)
+
+def comment_update(request, place_id):
+#  """Добавляет новую запись по конкретной теме."""
+    place = Places.objects.get(id=place_id)
+    if request.method != 'POST':
+ # Данные не отправлялись; создается пустая форма.
+        form = CommentsForm()
+    else:
+ # Отправлены данные POST; обработать данные.
+        form = CommentsForm(data=request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.place = place
+            new_comment.save()
+            return redirect('comments', pk = place_id)
+
+ # Вывести пустую или недействительную форму.
+    context = {'place': place, 'form': form}
+    return render(request, 'responses_app/new_comment.html', context)

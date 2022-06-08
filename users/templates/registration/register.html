@@ -1,11 +1,27 @@
 {% extends "responses_app/base.html" %}
+{% block h1 %}
+    Register page
+    {% endblock h1 %}
+
+
 {% block body %}
- <form method="post" action="{% url 'users:register' %}" class="reg_form">
+ <form method="post" action="{% url 'users:register' %}" class="login-form">
  {% csrf_token %}
- {{ form.as_p }}
+   <div class="login-center" > 
+       <p class="form-group">
+       <input type="text" name="username" maxlength="150" autocapitalize="none" placeholder="Username:" class="login-control" >
+    </p>
+    <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+       <p class="form-group">
+       <input type="password" name="password1" autocomplete="new-password" placeholder="Password:" class="login-control" id="id_password1">
+     </p>
+     <p class="form-group">
+       <input type="password" name="password2" autocomplete="new-password" placeholder="Password confirmation:" class="login-control" id="id_password2">
+    </p>
+    <span class="helptext">Enter the same password as before, for verification.</span><br>
+    <button name="submit" class="btn btn-primary">Register</button>
+    <input type="hidden" name="next" value="{% url 'index' %}" />
 
- <button name="submit">register</button>
- <input type="hidden" name="next" value="{% url 'index' %}" />
- </form>
-
+   </div>
+    </form>
 {% endblock body %}
