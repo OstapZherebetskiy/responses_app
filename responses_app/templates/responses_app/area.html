@@ -1,0 +1,35 @@
+{% extends 'responses_app/base.html' %}
+
+{% block title %} 
+    {{area.area}}   
+    
+    {% endblock title %}
+    
+    
+{% block h1 %}
+    {{area.area}}   
+    
+
+    {% endblock h1 %}
+    <br>
+    
+    {% block body %}  
+    <small><a href="{% url 'new_place' area.id %}" class="btn btn-success">
+        Add new place</a></small>
+    {% for el in place %}
+    <div class="card mb-3">
+        <h4 class="card-header">
+         {{ el.date_added|date:'M d, Y H:i' }}
+         
+         
+         </h4>
+         <div class="card-body">
+            {{ el.text|linebreaks }}
+            <a href="{% url 'comments' el.id %}" class="btn btn-success"> View full info </a>
+            </div>
+            </div>
+
+        {% endfor %} 
+
+        
+    {% endblock body %}

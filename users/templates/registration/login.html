@@ -1,0 +1,29 @@
+{% extends "responses_app/base.html" %}
+{% load bootstrap4 %}
+
+ {% block body %}
+
+{% if form.errors %}
+ <p>Your username and password didn't match. Please try again.</p>
+ {% endif %}
+ <form method="post" action="{% url 'users:login' %}", class="login-form">
+{% csrf_token %}
+<div class="login-center" >
+<div class="form-group"><label for="id_username">Username: </label>
+    <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" class="login-control" placeholder="Username" title="" required="" id="id_username"></div>
+<div class="form-group"><label for="id_password">Password:</label>
+    <input type="password" name="password" autocomplete="current-password" class="login-control" placeholder="Password" title="" required="" id="id_password"></div>
+<div class="form-group">
+ <button name="submit" class="btn btn-primary">Log in</button>
+ </div>
+<input type="hidden" name="next" value="/" ,="" class="form__login">
+<a href="{% url 'users:register' %}" class="btn btn-success">Register</a>
+</div>
+</form>
+   <input type="hidden" name="next" value="{% url 'index' %}", class="form__login" />
+
+
+
+ <br>
+<br>
+ {% endblock body %}

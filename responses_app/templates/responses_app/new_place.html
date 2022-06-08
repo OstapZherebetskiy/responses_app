@@ -1,0 +1,25 @@
+{% extends "responses_app/base.html" %}
+{% load bootstrap4 %}
+
+{% block h1 %} {{ area.area }} {% endblock h1 %}
+{% block body %}
+
+
+ <p>Add a new place:</p>
+
+
+ <form action="{% url 'new_place' area.id %}" method="post"> {% csrf_token %}
+    <div class="new_form">
+        <div class="form-groupp">
+            <!-- <label for="id_text">Place:</label> -->
+            <textarea name="text" cols="80" rows="10" class="form-control form-control-text" placeholder="Place:" title="" required="" id="id_text"></textarea></div>
+       </div>
+   
+        <div class="form-groupp">
+            <br>
+        <button name="submit" class="btn btn-primary ">Add place</button>
+        </div>
+    
+    </form>
+ 
+ {% endblock body %}

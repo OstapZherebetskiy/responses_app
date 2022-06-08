@@ -1,0 +1,19 @@
+{% extends 'responses_app/base.html' %}
+
+{% block title %} 
+    Main page   
+
+    {% endblock title %}
+
+
+{% block h1 %}
+     Hello Lviv!:)
+    {% endblock h1 %}
+    {% block body %}  
+    <div class="city">
+    {% for el in area %}
+    <a href="{% url 'area' el.id %}" class="head__btn">{{ el.area }}</a>
+    {% endfor %} 
+
+</div>
+    {% endblock body %}
