@@ -1,0 +1,21 @@
+{% extends 'responses_app/base.html' %}
+
+{% block title %} 
+    Image page   
+
+    {% endblock title %}
+
+
+{% block h1 %}
+     Images
+    {% endblock h1 %}
+    {% block body %}  
+    <div class="city">
+    {% for el in image %}
+        {{ el.id }}
+        {{ el.name }}
+    <img src="{{ el.file.url }}" style="max-height: 200px;"><br>
+    {% endfor %} 
+
+</div>
+    {% endblock body %}

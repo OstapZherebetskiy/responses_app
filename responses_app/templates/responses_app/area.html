@@ -16,15 +16,16 @@
     {% block body %}  
     <small><a href="{% url 'new_place' area.id %}" class="btn btn-success">
         Add new place</a></small>
+        
     {% for el in place %}
     <div class="card mb-3">
         <h4 class="card-header">
-         {{ el.date_added|date:'M d, Y H:i' }}
-         
+         {{ el.text|linebreaks }}
          
          </h4>
          <div class="card-body">
-            {{ el.text|linebreaks }}
+         {{ el.date_added|date:'M d' }}
+            
             <a href="{% url 'comments' el.id %}" class="btn btn-success"> View full info </a>
             </div>
             </div>

@@ -22,4 +22,13 @@
     
     </form>
  
+
+
+    <form action="{% url 'new_place' area.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name='submit'>add entry</button>
+        </form>
+
+        
  {% endblock body %}

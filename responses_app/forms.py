@@ -1,4 +1,3 @@
-
 from django import forms
 
 from .models import Areas, Places, Comments
@@ -16,6 +15,6 @@ class CommentsForm(forms.ModelForm):
     class Meta:
         
         model = Comments
-        fields = ['text']
+        fields = ['text', 'file']
         labels = {'text': 'Comment:'}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}

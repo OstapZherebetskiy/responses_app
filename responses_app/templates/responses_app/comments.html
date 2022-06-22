@@ -16,14 +16,16 @@
     {% for el in comment %}
     <div class="card mb-3">
         <h4 class="card-header">
-         {{ el.date_added|date:'M d, Y H:i' }}
-         
-         
-         </h4>
-         <div class="card-body">
             {{ el.text|linebreaks }}
-
-        </div>
+            {% if el.file %}
+            <img src="{{ el.file.url }}" style="max-height: 200px;"><br>
+            {% endif %}
+        </h4>
+            <div class="card-body">
+                {{ el.date_added|date:'M d, Y H:i' }}
+            </div>
+         
+         
     </div>
     
     {% endfor %} 

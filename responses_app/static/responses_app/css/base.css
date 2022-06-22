@@ -1,49 +1,82 @@
-body{
-    margin: 0px;
-
-    
-    background-image: url(../images/lviv.png);
-    
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
-    background-size: cover;
+html {
+    scroll-behavior: smooth;
 }
-header {
-    position: sticky;
-    display: flex;
-    top: 0;
-    z-index: 1;
-    /* background: lightgray; */
-    height: 50px;
-    font-size: 20px;
-    justify-content: flex-end;
 
-    
+body {
+    margin: 0;
+    padding-top: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
 }
+
+.null {
+    height: 1px;
+    width: 100vh;
+}
+
 .bg__image {
     height: 100vh;
     left: 0;
-    top: 0;
+    top: -1;
+    z-index: -1;
     background-image: url(../images/lviv.png);
     background-repeat: no-repeat;
-    background-size: cover;
-}
+    background-size: cover; 
+  }
+
+header {
+    position: fixed;
+    display: flex;
+    top: 0;
+    z-index: 1;
+    width: calc(100vw - 50px);
+    height: 50px;
+    padding: 0 25px;
+    font-size: 20px;
+    justify-content: flex-end;  
+} 
+
+
 header div {
-    
     align-items:center;
     display: flex;
     justify-content: space-around;
     width: 500px;
 }
-
+.main-block {
+    display: flex;
+    margin-top: 250px;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.main-text {
+    background-color: rgba(255, 255, 255, 0.473);
+    width: 50%;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+.main-link {
+    background-color: rgba(255, 255, 255, 0.473);
+    width: 30%;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 2s;
+}
+.main-link:hover {
+    text-decoration: none;
+}
 .head__btn {
     display: inline-block;
     text-decoration: none;
     color: black;
     transition: all 0.5s;
-    background-color: rgba(116, 109, 109, 0.151);
+    background-color: rgba(116, 109, 109, 0.788);
     padding: 1px 10px;
     border: solid 2px ;
     border-color: black;
@@ -58,16 +91,20 @@ header div {
 }
 
 .body {
-    
     margin:0 20%;
+    margin-top: 100px;
     width: 60%;
     text-align: center;
+    
+    scroll-behavior:smooth;
 }
+
 .city {
+    
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    height: 60%;
+    height: calc(100vh - 100px);
     align-items: center;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.247);
@@ -216,4 +253,25 @@ header div {
 .helptext {
     font-size: large;
     color: black;
+}
+
+ .image-load {
+     display: none;  
+ } 
+
+.label{
+    align-items: center;
+    background-color: rgba(116, 109, 109, 0.705);
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+    border: solid 1px;
+    border-color: whitesmoke;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+}
+#file {
+    color: aqua;
+    height: 10px;
 }

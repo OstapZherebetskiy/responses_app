@@ -5,15 +5,28 @@
 
     {% endblock title %}
 
-
+    {% block bg__image %} 
+    <div class="bg__image"> 
+    <div class="null"></div>
+    <div class="main-block"><b class="main-text">
+        Основиний текст сторінки на якому розказується про сайт Lorem, ipsum 
+        dolor sit amet consectetur adipisicing elit. Voluptate pariatur assumenda 
+        fuga repudiandae debitis inventore sit? Animi labore recusandae quisquam.
+        
+        </b>
+        </br><a href="#city" class="main-link">Перейти до вибору района</a>
+        </div>
+    </div>
+        {% endblock bg__image %}
 {% block h1 %}
-     Hello Lviv!:)
+    <h1 class="main-h1"> Hello Lviv!:)</h1>
     {% endblock h1 %}
     {% block body %}  
-    <div class="city">
+    <div class="city" id="city">
+    {% if area %}    
     {% for el in area %}
     <a href="{% url 'area' el.id %}" class="head__btn">{{ el.area }}</a>
     {% endfor %} 
-
+        {% endif %}
 </div>
     {% endblock body %}

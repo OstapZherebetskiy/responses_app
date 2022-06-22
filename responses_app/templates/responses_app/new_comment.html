@@ -8,18 +8,30 @@
  <p>Add a new comment:</p>
 
 
- <form action="{% url 'comment_update' place.id %}" method="post"> {% csrf_token %}
+ <form action="{% url 'comment_update' place.id %}" method="post", enctype="multipart/form-data"> {% csrf_token %}
     <div class="new_form">
         <div class="form-groupp">
             <!-- <label for="id_text">Place:</label> -->
             <textarea name="text" cols="80" rows="10" class="form-control form-control-text" placeholder="Place:" title="" required="" id="id_text"></textarea></div>
        </div>
-   
+       <br>
+       <p>
+        <label for="id_file" class="label">
+            <span id="file"></span>
+            Select Image 
+            <input type="file" name="file" accept="image/*" required="" id="id_file" class="image-load">
+          </label>
+
+         </p>
+            
         <div class="form-groupp">
             <br>
         <button name="submit" class="btn btn-primary ">Add comment</button>
         </div>
-    
+        
     </form>
+
+    
+
  
  {% endblock body %}

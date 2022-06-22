@@ -8,5 +8,7 @@ urlpatterns = [
     path('new_place/<int:area_id>/', views.new_place, name='new_place'),
     path('delete/<int:pk>/', views.OrderDeleteView.as_view(), name='order_delete'),
     path('<int:pk>/comments', views.comments, name='comments'),    
-    path('<int:place_id>/comment/update', views.comment_update, name='comment_update'),    
+    path('<int:place_id>/comment/update', views.comment_update, name='comment_update'),
+   
+
 ]

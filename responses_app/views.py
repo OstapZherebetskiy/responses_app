@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from .models import Areas, Places, Comments
 from .forms import PlacesForm, CommentsForm
-from django.views.generic import DeleteView, UpdateView
+from django.views.generic import DeleteView
 # Create your views here.
 
 def index(request):
@@ -28,7 +29,7 @@ def new_place(request, area_id):
         form = PlacesForm()
     else:
  # Отправлены данные POST; обработать данные.
-        form = PlacesForm(data=request.POST)
+        form = PlacesForm(request.POST, request.FILES)
         if form.is_valid():
             new_place = form.save(commit=False)
             new_place.area = area
@@ -39,9 +40,28 @@ def new_place(request, area_id):
     context = {'area': area, 'form': form}
     return render(request, 'responses_app/new_place.html', context)
 
+def comment_update(request, place_id):
+#  """Добавляет новую запись по конкретной теме."""
+    place = Places.objects.get(id=place_id)
+    if request.method != 'POST':
+ # Данные не отправлялись; создается пустая форма.
+        form = CommentsForm()
+    else:
+ # Отправлены данные POST; обработать данные.
+        form = CommentsForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.place = place
+            new_comment.save()
+            return redirect('comments', pk = place_id)
+
+ # Вывести пустую или недействительную форму.
+    context = {'place': place, 'form': form}
+    return render(request, 'responses_app/new_comment.html', context)
+
 class OrderDeleteView(DeleteView):
     model = Places
-    success_url = '/'
+    success_url = reverse_lazy('index')
     template_name = 'responses_app/order_delete.html'
 
 def comments(request, pk):
@@ -53,21 +73,8 @@ def comments(request, pk):
     }
     return render(request, 'responses_app/comments.html', context)
 
-def comment_update(request, place_id):
-#  """Добавляет новую запись по конкретной теме."""
-    place = Places.objects.get(id=place_id)
-    if request.method != 'POST':
- # Данные не отправлялись; создается пустая форма.
-        form = CommentsForm()
-    else:
- # Отправлены данные POST; обработать данные.
-        form = CommentsForm(data=request.POST)
-        if form.is_valid():
-            new_comment = form.save(commit=False)
-            new_comment.place = place
-            new_comment.save()
-            return redirect('comments', pk = place_id)
 
- # Вывести пустую или недействительную форму.
-    context = {'place': place, 'form': form}
-    return render(request, 'responses_app/new_comment.html', context)
+
+
+
+    
