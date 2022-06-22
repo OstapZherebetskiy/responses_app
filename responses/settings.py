@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-fq@aqbf_aovt06uttmca#eizw)77ivm8q2hlw!vksxa+e4x!n*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+ALLOWED_HOSTS = ['lit-wildwood-19690.herokuapp.com', '127.0.0.1']
 
 
 
@@ -131,7 +131,7 @@ STATIC_URL = 'static/'
 #     BASE_DIR / "responses_app/static/",
     
 # ]
-STATIC_ROOT = "responses_app/static/"
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = "/media/"
 
