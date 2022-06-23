@@ -275,3 +275,11 @@ header div {
     color: aqua;
     height: 10px;
 }
+
+.form-control.is-valid { 
+    border-color: black;
+}
+
+.form-control.is-valid:focus {
+    border-color: black;
+}

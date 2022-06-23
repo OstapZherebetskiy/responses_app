@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import Areas, Places, Comments
 from .forms import PlacesForm, CommentsForm
 from django.views.generic import DeleteView
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -21,6 +22,7 @@ def area(request, id):
     }
     return render(request, 'responses_app/area.html', data)
 
+@login_required
 def new_place(request, area_id):
 #  """Добавляет новую запись по конкретной теме."""
     area = Areas.objects.get(id=area_id)
@@ -40,6 +42,7 @@ def new_place(request, area_id):
     context = {'area': area, 'form': form}
     return render(request, 'responses_app/new_place.html', context)
 
+@login_required
 def comment_update(request, place_id):
 #  """Добавляет новую запись по конкретной теме."""
     place = Places.objects.get(id=place_id)
@@ -48,12 +51,15 @@ def comment_update(request, place_id):
         form = CommentsForm()
     else:
  # Отправлены данные POST; обработать данные.
+       
         form = CommentsForm(request.POST, request.FILES)
         if form.is_valid():
             new_comment = form.save(commit=False)
             new_comment.place = place
             new_comment.save()
             return redirect('comments', pk = place_id)
+    
+
 
  # Вывести пустую или недействительную форму.
     context = {'place': place, 'form': form}
@@ -62,7 +68,7 @@ def comment_update(request, place_id):
 class OrderDeleteView(DeleteView):
     model = Places
     success_url = reverse_lazy('index')
-    template_name = 'responses_app/order_delete.html'
+    template_name = 'responses_app/place_delete.html'
 
 def comments(request, pk):
     place = Places.objects.get(id=pk)

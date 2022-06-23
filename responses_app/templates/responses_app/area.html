@@ -27,6 +27,7 @@
          {{ el.date_added|date:'M d' }}
             
             <a href="{% url 'comments' el.id %}" class="btn btn-success"> View full info </a>
+            <a href="{% url 'place_delete' el.id %}" class="btn btn-success">Delete place </a>
             </div>
             </div>
 

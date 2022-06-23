@@ -31,7 +31,7 @@ class Comments(models.Model):
     place = models.ForeignKey(Places, on_delete=models.CASCADE)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
-    file = models.ImageField(upload_to='files/',null=True)
+    file = models.ImageField(upload_to='files/',null=True, blank=True)
 
 
     class Meta:
